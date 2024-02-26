@@ -10,6 +10,16 @@ router.get('/login', loginRegisterController.login_page);
 
 router.get('/register', loginRegisterController.register_page);
 
+router.get('logout', (req, res, next) => {
+  req.logOut((err) => {
+    if(err){
+        next(err);
+    } else {
+     res.redirect("/");   
+    }
+  });
+});
+
 router.get('/create', postController.get_create_post);
 
 router.get('/:id', postController.get_single_post);
