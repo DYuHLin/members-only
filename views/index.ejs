@@ -7,17 +7,9 @@
     <title>Home</title>
 </head>
 <body>
-    <% if(user){ %>
+    <a href="/logout">Log out</a>
     <h1>Home</h1>
-    <% }else{ %>
-        <h1>Login</h1>
-    <form action="/login" method="post">
-        <label for="name">Username: </label>
-        <input id="name" name="name" type="text" required placeholder="username">
-        <label for="password">Password: </label>
-        <input name="password" id="password" type="password" required placeholder="password">
-        <button>Login</button>
-    </form>
-    <% } %>
+    <h1>Login</h1>
+   
 </body>
 </html>

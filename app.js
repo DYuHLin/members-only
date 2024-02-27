@@ -38,9 +38,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy(async (name, password, done) => {
     try{
-      const user = await userModel.findOne({name: username});
+      const user = await userModel.findOne({name: name});
       if(!user) {
         return done(null, false, {message: "Incorrect Username"});
       }

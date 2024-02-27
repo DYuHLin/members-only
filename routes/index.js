@@ -10,8 +10,8 @@ router.get('/login', loginRegisterController.login_page);
 
 router.get('/register', loginRegisterController.register_page);
 
-router.get('logout', (req, res, next) => {
-  req.logOut((err) => {
+router.get('/logout', (req, res, next) => {
+  req.logout((err) => {
     if(err){
         next(err);
     } else {
