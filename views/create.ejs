@@ -8,5 +8,13 @@
 </head>
 <body>
     <h1>Create</h1>
+    <form method="POST">
+        <input type="hidden" value="<%=user._id %>" name="user" id="user">
+        <label for="title" id="title">Title: </label>
+        <input type="text" id="title" name="title" placeholder="Title">
+        <label for="message" id="title">Message: </label>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+        <button>Create Post</button>
+    </form>
 </body>
 </html>
