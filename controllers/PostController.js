@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 exports.get_all_posts = asyncHandler((req, res, next) => {
-    res.render("index", {title: "Posts"});
+    res.render("index", {title: "Posts", user: req.user});
 });
 
 exports.get_create_post = asyncHandler((req, res, next) => {
