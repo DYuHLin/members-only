@@ -47,6 +47,14 @@ exports.post_create_post = [
     })
 ];
 
-exports.get_single_post = asyncHandler((req, res, next) => {
-    res.render("details", {title: "Details"});
+exports.get_single_post = asyncHandler(async(req, res, next) => {
+    const posts = await Posts.findById(req.params.id).populate("user").exec();
+
+    if(posts === null){
+        const err = new Error("Post not found");
+        err.status = 404;
+        next(err);
+    };
+
+    res.render("details", {title: "Details", posts: posts});
 });
