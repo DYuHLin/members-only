@@ -7,9 +7,18 @@
     <title>Home</title>
 </head>
 <body>
-    <a href="/logout">Log out</a>
-    <h1>Home <%=user.name %></h1>
-    <h1>Login</h1>
-   
+    <section>
+        <a href="/logout">Log out</a>
+        <h1>Home <%=user.name %></h1>
+        <h1>Login</h1>
+
+        <%posts.forEach(element => { %>
+            <div>
+                <h2><%=element.title %></h2>
+                <p><%=element.message %></p>
+                <span><%=element.date_formatted %></span>
+            </div>
+        <% }); %>
+    </section>
 </body>
 </html>
