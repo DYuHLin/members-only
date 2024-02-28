@@ -58,3 +58,39 @@ exports.get_single_post = asyncHandler(async(req, res, next) => {
 
     res.render("details", {title: "Details", posts: posts});
 });
+
+exports.get_update_post = asyncHandler(async (req, res, next) => {
+    const posts = await Posts.findById(req.params.id).exec();
+    res.render("create", {title: "Create Posts", user: req.user, posts: posts});
+});
+
+exports.post_update_post = [
+    body("title", "Title should not be empty.")
+        .trim()
+        .isLength({min: 1})
+        .escape(),
+    body("message", "Message should not be empty.")
+        .trim()
+        .isLength({min: 1})
+        .escape(),
+
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+
+        const postInstance = new Posts({
+            user: req.body.user,
+            title: req.body.title,
+            message: req.body.message,
+            date: Date.now(),
+            _id: req.params.id
+        });
+
+        if(!errors.isEmpty()){
+            const posts = await Posts.findById(req.params.id).exec();
+            res.render("create", {title: "Create Posts", user: req.user, posts: posts});
+        } else{
+            const updatePost = await Posts.findByIdAndUpdate(req.params.id, postInstance, {});
+            res.redirect(postInstance.url);
+        };
+    })
+];

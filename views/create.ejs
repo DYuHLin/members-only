@@ -11,9 +11,9 @@
     <form method="POST">
         <input type="hidden" value="<%=user._id %>" name="user" id="user">
         <label for="title" id="title">Title: </label>
-        <input type="text" id="title" name="title" placeholder="Title">
+        <input type="text" id="title" name="title" placeholder="Title" value="<%=undefined === posts ? "" : posts.title %>">
         <label for="message" id="title">Message: </label>
-        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+        <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"><%=undefined === posts ? "" : posts.message %></textarea>
         <button>Create Post</button>
     </form>
 </body>
