@@ -4,12 +4,13 @@ const {body, ValidationResult, validationResult} = require('express-validator');
 const asyncHandler = require('express-async-handler');
 
 exports.get_all_posts = asyncHandler(async (req, res, next) => {
-    const posts = await Posts.find().sort({date: 1}).exec();
+    const posts = await Posts.find().sort({date: 1}).populate("user").exec();
     if(!req.user){
         res.redirect("/login");
     } else {
         res.render("index", {title: "Posts", user: req.user, posts: posts});
     }; 
+    
 });
 
 exports.get_create_post = asyncHandler(async (req, res, next) => {
@@ -56,11 +57,20 @@ exports.get_single_post = asyncHandler(async(req, res, next) => {
         next(err);
     };
 
-    res.render("details", {title: "Details", posts: posts});
+    if(!req.user){
+        res.redirect("/login")
+    };
+
+    res.render("details", {title: "Details", user: req.user._id, postid: posts._id, posts: posts});
 });
 
 exports.get_update_post = asyncHandler(async (req, res, next) => {
     const posts = await Posts.findById(req.params.id).exec();
+
+    if(!req.user){
+        res.redirect("/login");
+    };
+
     res.render("create", {title: "Create Posts", user: req.user, posts: posts});
 });
 
@@ -100,6 +110,10 @@ exports.get_delete_post = asyncHandler(async(req, res, next) => {
 
     if(post === null){
         res.redirect("/");
+    };
+    
+    if(!req.user){
+        res.redirect("/login");
     };
 
     res.render("delete", {title: "Delete Post", post: post});

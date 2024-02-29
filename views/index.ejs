@@ -10,13 +10,15 @@
     <section>
         <a href="/logout">Log out</a>
         <h1>Home <%=user.name %></h1>
-        <h1>Login</h1>
-
+        <%if(user.member === true){ %>
+        <a href="/create">Create Post</a>
+        <% } %>
         <%posts.forEach(element => { %>
             <div>
-                <h2><%=element.title %></h2>
+                <a href="<%=element.url %>"><%=element.title %></a>
                 <p><%=element.message %></p>
                 <span><%=element.date_formatted %></span>
+                <span><%=element.user.name %></span>
             </div>
         <% }); %>
     </section>
