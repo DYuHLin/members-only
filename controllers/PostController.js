@@ -94,3 +94,20 @@ exports.post_update_post = [
         };
     })
 ];
+
+exports.get_delete_post = asyncHandler(async(req, res, next) => {
+    const post = await Posts.findById(req.params.id).populate("user").exec();
+
+    if(post === null){
+        res.redirect("/");
+    };
+
+    res.render("delete", {title: "Delete Post", post: post});
+});
+
+exports.post_delete_post = asyncHandler(async (req, res, next) => {
+    const post = await Posts.findById(req.params.id).populate("user").exec();
+
+    await Posts.findByIdAndDelete(req.body.postid);
+    res.redirect("/");
+});

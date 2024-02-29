@@ -28,4 +28,7 @@ router.post('/:id/update', postController.post_update_post);
 
 router.get('/:id', postController.get_single_post);
 
+router.get('/:id/delete', postController.get_delete_post);
+router.post('/:id/delete', postController.post_delete_post);
+
 module.exports = router;
