@@ -1,5 +1,5 @@
 const Posts = require('../models/posts');
-const {body, ValidationResult, validationResult} = require('express-validator');
+const {body, validationResult} = require('express-validator');
 
 const asyncHandler = require('express-async-handler');
 
