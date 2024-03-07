@@ -10,10 +10,21 @@
     <h1>Register</h1>
     <a href="/login">Login</a>
     <form action="" method="post">
+        <label for="surname">Surname: </label>
+        <input id="surname" name="surname" type="text" required placeholder="surname">
+
+        <label for="firstname">Name: </label>
+        <input id="firstname" name="firstname" type="text" required placeholder="name">
+
         <label for="name">Username: </label>
         <input id="name" name="name" type="text" required placeholder="username">
+
         <label for="password">Password: </label>
         <input name="password" id="password" type="password" required placeholder="password">
+
+        <label for="confirmpassword">Confirm Password: </label>
+        <input name="confirmpassword" id="confirmpassword" type="password" required placeholder="password">
+
         <button>Register</button>
     </form>
 </body>

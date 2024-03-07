@@ -81,10 +81,17 @@ try{
   bcrypt.hash(req.body.password, 10, async(err, hashedPassword) => {
     if(err){
       return next(err);
+    } else if(req.body.password !== req.body.confirmpassword){
+      console.log("passwords don't match")
+      return next(err);
     } else {
       const user = new userModel({
+        firstname: req.body.firstname,
+        surname: req.body.surname,
+        password: hashedPassword,
         name: req.body.name,
-        password: hashedPassword
+        admin: false,
+        member: false,
       });
 
       const result = user.save();
