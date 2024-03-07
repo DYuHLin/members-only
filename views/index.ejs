@@ -11,9 +11,12 @@
         <section>
             <a href="/logout">Log out</a>
             <h1>Home <%=user.name %></h1>
+
             <%if(user.member === true){ %>
             <a href="/create">Create Post</a>
-            <% } %>
+            <% } else{ %>
+                <a href="/membership">Become a member</a>
+            <%} %>
             <%posts.forEach(element => { %>
                 <div>
                     <a href="<%=element.url %>"><%=element.title %></a>
@@ -25,11 +28,8 @@
         </section>
     <%}else{ %>
         <section>
-            <a href="/logout">Log out</a>
+            <a href="/login">Log in</a>
             <h1>Home</h1>
-            <%if(user.member === true){ %>
-            <a href="/create">Create Post</a>
-            <% } %>
             <%posts.forEach(element => { %>
                 <div>
                     <a href="<%=element.url %>"><%=element.title %></a>

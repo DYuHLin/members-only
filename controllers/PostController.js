@@ -5,12 +5,8 @@ const asyncHandler = require('express-async-handler');
 
 exports.get_all_posts = asyncHandler(async (req, res, next) => {
     const posts = await Posts.find().sort({date: 1}).populate("user").exec();
-    if(!req.user){
-        res.redirect("/login");
-    } else {
-        res.render("index", {title: "Posts", user: req.user, posts: posts});
-    }; 
-    
+
+    res.render("index", {title: "Posts", user: req.user, posts: posts});    
 });
 
 exports.get_create_post = asyncHandler(async (req, res, next) => {

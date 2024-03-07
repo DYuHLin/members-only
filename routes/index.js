@@ -20,6 +20,8 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
+router.get("/membership", loginRegisterController.member_page);
+
 router.get('/create', postController.get_create_post);
 router.post('/create', postController.post_create_post);
 
