@@ -16,7 +16,7 @@ exports.member_page = asyncHandler(async (req, res, next) => {
 });
 
 exports.post_member_code = [
-    body("member")
+    body("member", "Members should not be empty")
         .trim()
         .isLength({min: 1})
         .escape(),
@@ -24,27 +24,27 @@ exports.post_member_code = [
     asyncHandler(async (req, res, next) => {
         const error = validationResult(req);
 
-        let memberInstance;
-
-        if(process.env.MEMBER_CODE === req.body.member){
-            memberInstance = new user({
+        if(req.body.member === process.env.MEMBER_CODE){
+            const memberInstance = new user({
                 firstname: req.user.firstname,
                 surname: req.user.surname,
                 password: req.user.password,
                 name: req.user.name,
                 admin: false,
                 member: true,
+                _id: req.user._id
             });
-        } else {
-            res.render("members", {title: "Become member"});
-        }
-        
+            
+            if(!error.isEmpty()){
+                res.render("members", {title: "Become member"});
+            } else{
+                const updateUser = await user.findByIdAndUpdate(req.user._id, memberInstance, {});
+                res.redirect("/");
+            }
 
-        if(!error.isEmpty()){
+        } else {
+            console.log(req.user)
             res.render("members", {title: "Become member"});
-        } else{
-            const updateUser = await user.findByIdAndUpdate(req.user._id, memberInstance, {});
-            res.redirect("/");
         }
     })
 ];
