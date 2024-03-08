@@ -23,6 +23,9 @@ router.get('/logout', (req, res, next) => {
 router.get("/membership", loginRegisterController.member_page);
 router.post("/membership", loginRegisterController.post_member_code);
 
+router.get("/admin", loginRegisterController.admin_page);
+router.post("/admin", loginRegisterController.post_admin_code);
+
 router.get('/create', postController.get_create_post);
 router.post('/create', postController.post_create_post);
 

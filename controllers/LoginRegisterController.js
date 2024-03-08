@@ -50,7 +50,7 @@ exports.post_member_code = [
 ];
 
 exports.admin_page = asyncHandler(async (req, res, next) => {
-    res.render("members", {title: "Become member", user: req.user});
+    res.render("admin", {title: "Become admin", user: req.user});
 });
 
 exports.post_admin_code = [
@@ -74,11 +74,11 @@ exports.post_admin_code = [
                 _id: req.user._id
             });
         } else {
-            res.render("members", {title: "Become member"});
+            res.render("admin", {title: "Become admin"});
         }
 
         if(!error.isEmpty()){
-            res.render("members", {title: "Become member"});
+            res.render("admin", {title: "Become admin"});
         } else{
             const updateUser = await user.findByIdAndUpdate(req.user._id, memberInstance, {});
             res.redirect("/");
