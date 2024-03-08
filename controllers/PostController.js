@@ -57,7 +57,7 @@ exports.get_single_post = asyncHandler(async(req, res, next) => {
         res.redirect("/login")
     };
 
-    res.render("details", {title: "Details", user: req.user._id, postid: posts._id, posts: posts});
+    res.render("details", {title: "Details", user: req.user, postid: posts._id, posts: posts});
 });
 
 exports.get_update_post = asyncHandler(async (req, res, next) => {

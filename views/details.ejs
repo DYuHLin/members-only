@@ -10,7 +10,9 @@
     <section>
         <h1>Details</h1>
         <a href="/">Home</a>
-        
+        <%if(user.admin === true){ %>
+            <a href="<%=postid %>/delete">Delete</a>
+        <%} %>
            <h1><%=posts.user.name %></h1>
            <h2><%=posts.title %></h2> 
            <p><%=posts.message %></p> 
