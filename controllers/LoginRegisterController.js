@@ -70,7 +70,7 @@ exports.post_admin_code = [
                 password: req.user.password,
                 name: req.user.name,
                 admin: true,
-                member: false,
+                member: true,
                 _id: req.user._id
             });
         } else {

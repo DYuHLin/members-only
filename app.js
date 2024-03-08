@@ -95,7 +95,7 @@ try{
       });
 
       const result = user.save();
-      res.redirect("/");
+      res.redirect("/login");
     };
   });
 } catch(err){

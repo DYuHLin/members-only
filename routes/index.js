@@ -29,9 +29,6 @@ router.post("/admin", loginRegisterController.post_admin_code);
 router.get('/create', postController.get_create_post);
 router.post('/create', postController.post_create_post);
 
-router.get('/:id/update', postController.get_update_post);
-router.post('/:id/update', postController.post_update_post);
-
 router.get('/:id', postController.get_single_post);
 
 router.get('/:id/delete', postController.get_delete_post);
