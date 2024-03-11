@@ -11,6 +11,11 @@ exports.get_all_posts = asyncHandler(async (req, res, next) => {
 
 exports.get_create_post = asyncHandler(async (req, res, next) => {
     const posts = await Posts.find().sort({title: 1}).exec();
+
+    if(req.user.member === false){
+        res.redirect("/");
+    };
+
     res.render("create", {title: "Create Posts", user: req.user, posts: posts});
 });
 
