@@ -17,9 +17,109 @@ body {
   background-color: rgb(235, 231, 231);
 }
 
+h1{
+  font-size: 34px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h2{
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 section{
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.log{
+  margin-top: 16px;
+}
+
+.page-links {
+  text-decoration: none;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.detail-links{
+  display: flex;
+  gap: 16px;
+  margin-bottom: 26px;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+.home-page{
+  padding: 24px;
+  width: 35%;
+  word-wrap: break-word;
+  margin-bottom: 28px;
+  border-radius: 7px;
+  box-shadow: 5px 5px 5px 5px hsl(0, 0%, 80%);
+  transition: all 0.3s;
+  background-color: white;
+}
+
+button {
+  border: none;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(239, 255, 93);
+  color: black;
+  font-size: 18px;
+  transition: all 0.3s;
+  margin-top: 20px;
+}
+
+button:hover{
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+textarea {
+  margin-bottom: 20px;
+}
+
+input{
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  border-radius: 7px;
+  border: none;
+  padding: 10px;
+}
+
+textarea {
+  background-color: white;
+  width: 100%;
+  border-radius: 7px;
+  border: none;
+  resize: none;
+  padding: 10px;
+}
+
+label {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 7px;
 }

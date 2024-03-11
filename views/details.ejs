@@ -9,15 +9,19 @@
 </head>
 <body>
     <section>
-        <h1>Details</h1>
-        <a href="/">Home</a>
+        <h1>Members Only</h1>
+        <h2>Details</h2>
+        <a class="page-links" href="/">Home</a>
         <%if(user.admin === true){ %>
-            <a href="<%=postid %>/delete">Delete</a>
+            <a class="page-links" href="<%=postid %>/delete">Delete</a>
         <%} %>
-           <h1><%=posts.user.name %></h1>
+        <div class="home-page">
+            <h1><%=posts.user.name %></h1>
            <h2><%=posts.title %></h2> 
            <p><%=posts.message %></p> 
            <span><%=posts.date_formatted %></span>
+        </div>
+           
     </section>
     
 </body>

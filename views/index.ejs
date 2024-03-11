@@ -10,36 +10,40 @@
 <body>
     <%if(user){ %>
         <section>
-            <a href="/logout">Log out</a>
-            <h1>Home <%=user.name %></h1>
+            <h1>Members Only</h1>
+            <h2>Welcome, <%=user.name %></h2>
 
             <%if(user.member === true){ %>
-            <a href="/create">Create Post</a>
+            <a class="page-links" href="/create">Create Post</a>
             <% } else{ %>
-                <a href="/membership">Become a member</a>
-                <a href="/admin">Become a admin</a>
+                <a class="page-links" href="/membership">Become a member</a>
+                <a class="page-links" href="/admin">Become a admin</a>
             <%} %>
             <%posts.forEach(element => { %>
-                <div>
-                    <a href="<%=element.url %>"><%=element.title %></a>
+                <div class="home-page">
+                    <a class="detail-links" href="<%=element.url %>"><%=element.title %></a>
                     <p><%=element.message %></p>
-                    <span><%=element.date_formatted %></span>
+                    <p><%=element.date_formatted %></p>
                     <span><%=element.user.name %></span>
                 </div>
             <% }); %>
+
+            <a class="page-links log" href="/logout">Log out</a>
         </section>
     <%}else{ %>
         <section>
-            <a href="/login">Log in</a>
-            <h1>Home</h1>
+            <h1>Members Only</h1>
+            <h2>Home</h2>
             <%posts.forEach(element => { %>
-                <div>
-                    <a href="<%=element.url %>"><%=element.title %></a>
+                <div class="home-page">
+                    <a class="detail-links" href="<%=element.url %>"><%=element.title %></a>
                     <p><%=element.message %></p>
-                    <span>Sign in to see when this was posted</span>
+                    <p>Sign in to see when this was posted</p>
                     <span>Sign in to see who posted</span>
                 </div>
             <% }); %>
+
+            <a class="page-links log" href="/login">Log in</a>
         </section>
     <%} %>
     

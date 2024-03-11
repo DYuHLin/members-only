@@ -8,7 +8,9 @@
     <title>Create</title>
 </head>
 <body>
-    <h1>Create</h1>
+    <section>
+        <h1>Members Only</h1>
+        <h2>Create</h2>
     <form method="POST">
         <input type="hidden" value="<%=user._id %>" name="user" id="user">
         <label for="title" id="title">Title: </label>
@@ -17,5 +19,7 @@
         <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"><%=undefined === posts ? "" : posts.message %></textarea>
         <button>Create Post</button>
     </form>
+    </section>
+    
 </body>
 </html>
