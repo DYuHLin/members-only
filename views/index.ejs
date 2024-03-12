@@ -13,8 +13,11 @@
             <h1>Members Only</h1>
             <h2>Welcome, <%=user.name %></h2>
 
+            <%if(user){ %>
+                <a class="page-links" href="/create">Create Post</a>
+            <% } %>
             <%if(user.member === true){ %>
-            <a class="page-links" href="/create">Create Post</a>
+                
             <% } else{ %>
                 <a class="page-links" href="/membership">Become a member</a>
                 <a class="page-links" href="/admin">Become a admin</a>
@@ -23,12 +26,18 @@
                 <div class="home-page">
                     <a class="detail-links" href="<%=element.url %>"><%=element.title %></a>
                     <p><%=element.message %></p>
+                    <%if(user.member === true || user.admin === true){ %>
                     <p><%=element.date_formatted %></p>
                     <span><%=element.user.name %></span>
+                    <%} else{ %>
+                        <p>Become a member to see when this was posted</p>
+                        <span>Become a member to see who posted</span>
+                    <%} %>
                 </div>
             <% }); %>
 
             <a class="page-links log" href="/logout">Log out</a>
+            <%-include("footer") %>
         </section>
     <%}else{ %>
         <section>
@@ -38,12 +47,14 @@
                 <div class="home-page">
                     <a class="detail-links" href="<%=element.url %>"><%=element.title %></a>
                     <p><%=element.message %></p>
-                    <p>Sign in to see when this was posted</p>
-                    <span>Sign in to see who posted</span>
+                    <p>Become a member to see when this was posted</p>
+                    <span>Become a member to see who posted</span>
                 </div>
             <% }); %>
 
             <a class="page-links log" href="/login">Log in</a>
+
+            <%-include("footer") %>
         </section>
     <%} %>
     
